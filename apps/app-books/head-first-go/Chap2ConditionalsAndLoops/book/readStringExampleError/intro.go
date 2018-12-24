@@ -4,12 +4,16 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 )
 
 func main() {
+	fmt.Print("Enter a grade: ")
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Enter text: ")
-	input, _ := reader.ReadString('\n')
+	input, error := reader.ReadString('\n')
+	if error != nil {
+		log.Fatal(error)
+	}
 	fmt.Println(input)
 }
